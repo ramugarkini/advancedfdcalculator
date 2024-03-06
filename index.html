@@ -1,0 +1,205 @@
+<meta name="viewport" content="width=800">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<!-- Latest compiled and minified CSS 4-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<!-- Latest compiled and minified CSS 3-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+
+<style>
+
+body {
+  background: -webkit-linear-gradient(left, #25b7c4, #25b7c4);
+  background: linear-gradient(to left, #6bf1fd, #f351ff);
+  font-family: 'Roboto', sans-serif;
+}
+
+label {
+ color: #000;
+ font-size: 14.7px;
+}
+
+div[id=main], ol[id=items], div.card, li.item { 
+  background-color: rgba(245, 245, 245, 0.1);
+  border: 1px solid transparent;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.80), 0 6px 6px rgba(0,0,0,0.50);
+  border-radius: 6px;
+  color: #000;
+}
+
+.butn {
+  display: inline-block;
+  padding: 15px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background: rgba(000, 000, 000, 0.5);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 9px rgba(000, 000, 000, 0.3);
+}
+
+.butn:hover {
+  background: rgba(000, 000, 000, 0.7);
+}
+
+.butn:active {
+  background: rgba(000, 000, 000, 0.7);
+  box-shadow: 0 5px rgba(000, 000, 000, 0.5);
+  transform: translateY(4px);
+}
+
+input[type = text], select[id] {
+  position: relative;
+  display: block;
+  font-size: 18px;
+  color: #000;
+  /*padding: 10px;*/
+  box-shadow: 0px 0px 2px 2px black inset;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+b {
+ font-size: 14.7px;
+ font-family: "Times New Roman", Times, serif;
+}
+
+.res_label {
+ color: #000;
+ font-family: Arial, Helvetica, sans-serif;
+ text-shadow: 1px 1px 5px white, 0 0 2px black;
+}
+</style>
+
+
+
+<script type="text/javascript">
+function calc0() {
+ var p0 = parseFloat($('#p0').val());
+ var r0= parseFloat($('#r0').val()/100);
+ var ns0 = $('#ns0').val();
+ var t0 = parseFloat($('#t0').val());
+ var ts0 = $('#ts0').val();
+
+
+ var n0;
+ if(ns0 == "M") {n0 = 12;}
+ if(ns0 == "Q") {n0 = 4;}
+ if(ns0 == "H") {n0 = 2;}
+ if(ns0 == "A") {n0 = 1;}
+ 
+ var tc0;
+ if(ts0 == "D") {tc0 = parseFloat(1/365); tss0 = "Day(s)";}
+ if(ts0 == "M") {tc0 = parseFloat(1/12); tss0 = "Month(s)";}
+ if(ts0 == "Y") {tc0 = parseFloat(1/1); tss0 = "Year(s)";}
+ 
+ var t0 = t0*tc0;
+ var calc13 = parseFloat(r0/n0);
+ var calc23 = parseFloat(1+calc13);
+ var calc33 = parseFloat(n0*t0);
+ var calc43 = Math.pow(calc23, calc33);
+ 
+ var a0 = (parseFloat(p0*calc43)).toFixed(2);
+ var ci0 = (a0-p0).toFixed(1);
+
+ var txt00 = '';
+ txt00 += "<b>"+ci0+"/-</b> is equal to <b>"+Math.round(ci0)+"/-</b>";
+ $("#myDiv00").html(txt00);
+
+ var txt01 = '';
+ txt01 += "<b>"+p0+"</b> + <b>"+Math.round(ci0)+"</b> = <b>"+(p0+Math.round(ci0))+"/-</b>";
+ $("#myDiv01").html(txt01);
+ $("#myDiv00, #myDiv01").css("margin-left", "5px");
+
+ if (ci0 == 'NaN') {$("#myDiv00").html('');$("#myDiv01").html('');}
+}
+</script>
+
+
+<div class='col-sm-12 form-group'>
+ <div class='card'>
+ <div class='card-header'></div>
+  <div class='card-body'>
+   <div class='row'>
+    <div class='col-sm-4 form-group'>
+     <label>Investment Amount (p) : </label>
+    </div>
+    <div class='col-sm-8 form-group'>
+     <input type='text' class='form-control' id='p0' value='2280' onkeyup='calc0()'>
+    </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-4 form-group'>
+     <label>Rate of Interest % (r) : </label>
+    </div>
+    <div class='col-sm-8 form-group'>
+     <input type='text' class='form-control' id='r0' value='4' onkeyup='calc0()'>
+    </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-4 form-group'>
+     <label>Compound Frequency (n) : </label>
+    </div>
+    <div class='col-sm-8 form-group'>
+     <select class='form-control' id='ns0' onchange='calc0()'>
+       <option value='M'>Monthly</option>
+       <option value='Q'>Quarterly</option>
+       <option value='H'>Half-yearly</option>
+       <option value='A'>Annually</option>
+     </select>
+    </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-4 form-group'>
+     <label>Time Period (t) : </label>
+    </div>
+    <div class='col-sm-8 form-group'>
+     <input class='col-sm-8 form-control' type='text' id='t0' value='10' onkeyup='calc0()'>
+     <select class='col-sm-4 form-control' id='ts0' onchange='calc0()'>
+       <option value='D'>Day(s)</option>
+       <option value='M'>Month(s)</option>
+       <option value='Y'>Year(s)</option>
+     </select>
+    </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-4 form-group'>
+     <label class='res_label'>Compound Interest (ci) : </label>
+    </div>
+    <div class='col-sm-8 form-group'>
+     <div class='card' style='box-shadow: 1px 1px 2px white, 0 0 10px white, 0 0 5px white, 0 10px 20px rgba(0,0,0,0.80), 0 6px 6px rgba(0,0,0,0.50);'>
+      <div id='myDiv00'></div>
+     </div>
+    </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-4 form-group'>
+     <label class='res_label'>Maturity Amount (a) : </label>
+    </div>
+    <div class='col-sm-8 form-group'>
+      <div class='card' style='box-shadow: 1px 1px 2px white, 0 0 10px white, 0 0 5px white, 0 10px 20px rgba(0,0,0,0.80), 0 6px 6px rgba(0,0,0,0.50);'>
+       <div id='myDiv01'></div>
+      </div>
+    </div>
+   </div>
+    <input type='button' class='butn' onclick='calc0();' value='Calculate' style="width: 100%">
+  </div>
+ </div>
+</div>
