@@ -32,5 +32,5 @@ This is a web-based application for calculating compound interest on Fixed Depos
 - CSS for styling (Bootstrap framework).
 - JavaScript (jQuery) for dynamic calculations and UI interactions.
 
-## Link
-https://advancedfdcalculator.blogspot.com/
+## Visit
+[Advanced FD Calculator Blog](https://advancedfdcalculator.blogspot.com/)
